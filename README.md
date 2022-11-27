@@ -215,8 +215,7 @@ Other components pin connection details
     ![SCR5](artwork/scr5.png)
 4.  **Settings** tab contains settings related to MQTT and sensors.
     ![SCR6](artwork/scr6.png)
-5. **HOME** tab shows historical sensor data in a HTML table form acquired after every 5 minutes.
-    ![SCR10](artwork/scr10.png)
+5. **HOME** tab shows sensor data acquired live.
 
 
 ## Web App <a name="webapp"></a>
