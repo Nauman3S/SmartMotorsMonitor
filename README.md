@@ -171,7 +171,7 @@ Other components pin connection details
 ## Usage <a name = "usage"></a>
 
 ```diff
-! This section is only for testing and not yet ready for end-user
+! Ready for testing
 ```
 1.  Power on your ESP32, it will present you with an AP named ```SmartJ``` (while ```SmartJ``` can be changed in the portal)
 2.  Default captive portal password `12345678AP` which can be changed in captive portal.
