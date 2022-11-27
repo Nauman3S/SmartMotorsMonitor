@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="artwork/smartspeaker.png" alt="Project logo"></a>
+ <img width=200px height=200px src="artwork/smartJoystick.png" alt="Project logo"></a>
 </p>
 
 <h3 align="center">Smart Joystick</h3>
@@ -118,20 +118,43 @@ Other components pin connection details
 ```
 
 
-#### VS1053
+#### ADS1115
 
-```VS1053 Connections```
+```ADS1115 Connections with ESP32```
 
-| VS1053 Pins | ESP32 Dev Module Pins| 
+| ADS1115 Pins | ESP32 Dev Module Pins| 
 | :--- | :--- | 
-| `VS1053_MOSI` | `23` |
-| `VS1053_MISO` | `19` |
-| `VS1053_SCK` | `18` | 
-| `VS1053_CS` | `5` | 
-| `VS1053_DCS` | `33` | 
-| `VS1053_DREQ` | `35` | 
-| `XRST` | `EN` | 
+| `SCL` | `22` |
+| `SDA` | `21` |
 | `GND` | `GND` | 
+
+#### Buttons
+
+```Buttons Connections with ESP32```
+
+| Buttons Pins | ESP32 Dev Module Pins| 
+| :--- | :--- | 
+| `BTN1_PIN1` | `12` |
+| `BTN1_PIN2` | `GND` |
+| `BTN2_PIN1` | `33` |
+| `BTN2_PIN2` | `GND` |
+
+#### Joystick Connections
+
+```Buttons Connections with ADS115 and ESP32```
+
+| Joystick Pins | ADS1115 Pins| 
+| :--- | :--- | 
+| `Joystick1_Y` | `A0` |
+| `Joystick1_X` | `A1` |
+| `Joystick2_Y` | `A2` |
+| `Joystick2_X` | `A3` |
+
+| Joystick Pins | ESP32 Pins| 
+| :--- | :--- | 
+| `Joystick1_BT` | `18` |
+| `Joystick2_BT` | `4` |
+
 
 #### Status RGB LED
 
@@ -139,38 +162,26 @@ Other components pin connection details
 
 | LED Pins | ESP32 Dev Module | 
 | :--- | :--- | 
-| `Anode` | `D2 via 220Ω resistor` |
+| `Anode` | `33 via 220Ω resistor` |
 | `Cathode` | `GND` |
-*D2 is also connected to the internal LED of ESP32 Dev Module*
+*33 is also connected to the internal LED of ESP32 Dev Module*
 
 
-
-### Circuit Diagram for Smart Button
-![CircuitDiagram](Circuit/Circuit-btn_bb.png)
-
-#### Status RGB LED
-
-```LED Connections```
-
-| Button Pins | ESP32 Dev Module | 
-| :--- | :--- | 
-| `PIN1` | `4 via 10kΩ pullup resistor` |
-| `PIN2` | `GND` |
 
 ## Usage <a name = "usage"></a>
 
 ```diff
 ! This section is only for testing and not yet ready for end-user
 ```
-1.  Power on your ESP32, it will present you with an AP named ```SS``` (while ```SS``` can be changed in the portal)
+1.  Power on your ESP32, it will present you with an AP named ```SmartJ``` (while ```SmartJ``` can be changed in the portal)
 2.  Default captive portal password `12345678AP` which can be changed in captive portal.
-3.  Connect to the ESP32 access point and open the web-browser and navigate to the link ```http://esp32.local/_ac```. This link will work on most of the operating systems but if your operating system is not allowing to open it, you may want to check the captive portal IP Address from the serial monitor and can use that IP address inplace of the above mentioned URL.
+3.  Connect to the ESP32 access point and open the web-browser and navigate to the link ```http://smartj.local/_ac```. This link will work on most of the operating systems but if your operating system is not allowing to open it, you may want to check the captive portal IP Address from the serial monitor and can use that IP address inplace of the above mentioned URL.
 4.  The default access IP Address is ```http://192.168.4.1/_ac```
 5.  You will be presented with a main dashboard as shown below(based on your device)
    ![SCR1](artwork/scr1.png)
 
 5.  Once connected to a WiFi network, you can again access the captive portal using same URL or the IP Address from the Serial monitor.
-6.  The data is published to the MQTT Topic ```SS/{hostname}``` while the hostname is the one which you can define in Settings page of the captive portal.
+6.  The data is published to the MQTT Topic ```smartj/{hostname}``` while the hostname is the one which you can define in Settings page of the captive portal.
 
 
 ### Changing Timezone
@@ -183,15 +194,15 @@ Other components pin connection details
 
 ### API Endpoints and HTML URLS
 
-```diff
-+ Only for developers
-```
-
 ```API Endpoints```
 
 | Endpoint | Description | 
 | :--- | :--- | 
-| `HTML PAGE: Settings. Default username: AP Name, Default Password: admin` | 
+| `/api-now` | `API: live sensor readings in JSON format` |
+| `/api` | `API: sensors data in JSON format` |
+| `/LiveSensors` | `HTML PAGE: Live Sensor Data` |
+| `/data` | `HTML PAGE: Historical Sensor Data` | 
+| `/mqtt_settings` | `HTML PAGE: Settings. Default username: AP Name, Default Password: admin` | 
 | `/_ac` | `HTML PAGE: Main Captive portal page` | 
 | `/` | `HTML PAGE: Historical Sensor Data` | 
 
@@ -247,7 +258,7 @@ Following components are used to make this project
 
 2. [Micro USB Cable](https://www.amazon.com/Android-Charger-sweguard-Charging-Phone-Grey/dp/B09MT18H3J/ref=sr_1_2_sspa?keywords=micro+usb+cable&qid=1661962441&sprefix=micro+usb+%2Caps%2C181&sr=8-2-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEzVkw1N1RQVTVHTVA3JmVuY3J5cHRlZElkPUEwODYyODU0MUdBSDQwTjBWVDZVSiZlbmNyeXB0ZWRBZElkPUEwODMyNjQyMVo4WU1VOVQ5UlMzQiZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=)
 
-3. [Breadboard, Jumper Wires and Power Supply Module](https://www.amazon.com/HUAREW-Breadboard-Wires%EF%BC%8CBattery-Clip%EF%BC%8C830-tie-Points/dp/B09TX9CMG1/ref=sr_1_1_sspa?crid=37A14NI37887J&keywords=breadboard&qid=1661962059&sprefix=breadboar%2Caps%2C174&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEzUFNNSFNZMlMwUlM1JmVuY3J5cHRlZElkPUEwNzIwOTA3MzNCWFhSWUxTSDNNOCZlbmNyeXB0ZWRBZElkPUEwMjkzNTA3UzVYTU9OSTBaSEJDJndpZGdldE5hbWU9c3BfYXRmJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==)
+3. [2x Joystick Modules](https://www.amazon.com/Active-Piezo-Buzzer-Module-SunFounder/dp/B014KQLE8Q/ref=sr_1_7?crid=33DTNM1X8SVMH&keywords=joystick%2Bmodule&qid=1660570221&sprefix=joystick%2Bmodule%2Caps%2C175&sr=8-7&th=1)
 
 4. [Jumper Wires](https://www.amazon.com/EDGELEC-Breadboard-Optional-Assorted-Multicolored/dp/B07GD2BWPY/ref=sr_1_1_sspa?crid=1EFHAMLH1TF1Q&keywords=jumper+wires&qid=1661962101&sprefix=jumper+wire%2Caps%2C197&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUFHUFdBUzFHMDVOSlUmZW5jcnlwdGVkSWQ9QTAwNTYwNTAyVDNTNFI5RVI4TTNQJmVuY3J5cHRlZEFkSWQ9QTA5NDU0MzYxSkE3VExKQkZEQUxaJndpZGdldE5hbWU9c3BfYXRmJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==)
 
