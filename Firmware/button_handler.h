@@ -2,9 +2,10 @@ void setupButtons()
 {
     pinMode(BTN1_PIN, INPUT_PULLUP);
     pinMode(BTN2_PIN, INPUT_PULLUP);
-
-    pinMode(J1_BUTTON_PIN, INPUT_PULLUP);
-    pinMode(J2_BUTTON_PIN, INPUT_PULLUP);
+    pinMode(BTN3_PIN, INPUT_PULLUP);
+    pinMode(BTN4_PIN, INPUT_PULLUP);
+    pinMode(BTN5_PIN, INPUT_PULLUP);
+    pinMode(BTN6_PIN, INPUT_PULLUP);
 }
 
 uint8_t getButtonState(int btn)
@@ -17,12 +18,23 @@ uint8_t getButtonState(int btn)
     {
         digitalRead(BTN2_PIN);
     }
-    else if (btn == J1_BTN)
+    else if (btn == BTN_3)
     {
-        digitalRead(J1_BUTTON_PIN);
+        digitalRead(BTN3_PIN);
     }
-    else if (btn == J2_BTN)
+
+    else if (btn == BTN_4)
     {
-        digitalRead(J2_BUTTON_PIN);
+        digitalRead(BTN4_PIN);
+    }
+
+    else if (btn == BTN_5)
+    {
+        digitalRead(BTN5_PIN);
+    }
+
+    else if (btn == BTN_6)
+    {
+        digitalRead(BTN6_PIN);
     }
 }

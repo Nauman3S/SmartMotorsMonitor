@@ -3,17 +3,15 @@
 
 #define BTN1_PIN 12
 #define BTN2_PIN 32
+#define BTN3_PIN 15
+#define BTN4_PIN 2
+#define BTN5_PIN 4
+#define BTN6_PIN 5
 
-#define J1_BUTTON_PIN 18
-#define J2_BUTTON_PIN 4
-
-
-#define J1_X_AXIX 100
-#define J1_Y_AXIX 101
-#define J2_X_AXIX 102
-#define J2_Y_AXIX 103
-#define J1_BTN 104
-#define J2_BTN 105
 
 #define BTN_1 106
 #define BTN_2 107
+#define BTN_3 108
+#define BTN_4 109
+#define BTN_5 110
+#define BTN_6 111

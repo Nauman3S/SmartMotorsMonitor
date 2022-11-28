@@ -1,6 +1,6 @@
 #include "consts.h"
 #include "button_handler.h"
-#include "joystickHandler.h"
+// #include "joystickHandler.h"
 #include "headers.h" //all misc. headers and functions
 #include "esp32InternalTime.h"
 #include "MQTTFuncs.h" //MQTT related functions
@@ -24,54 +24,39 @@ String loadParams(AutoConnectAux &aux, PageArgument &args) // function to load s
     String v6 = "0";
     String v7 = "0";
     String v8 = "0";
-    
+
     if (param)
     {
         Serial.println("load params func");
         aux.loadElement(param);
         Serial.println(param);
         // Serial.println(args);
-        AutoConnectText &J1XValueElm = aux["J1_X"].as<AutoConnectText>();
-        AutoConnectText &J1YValueElm = aux["J1_Y"].as<AutoConnectText>();
-        AutoConnectText &J2XValueElm = aux["J2_X"].as<AutoConnectText>();
-        AutoConnectText &J2YValueElm = aux["J2_Y"].as<AutoConnectText>();
-        AutoConnectText &J2BTNValueElm = aux["J2_BTN"].as<AutoConnectText>();
-        AutoConnectText &J1BTNValueElm = aux["J1_BTN"].as<AutoConnectText>();
+
         AutoConnectText &BTN1ValueElm = aux["BTN1"].as<AutoConnectText>();
         AutoConnectText &BTN2ValueElm = aux["BTN2"].as<AutoConnectText>();
+        AutoConnectText &BTN3ValueElm = aux["BTN3"].as<AutoConnectText>();
+        AutoConnectText &BTN4ValueElm = aux["BTN4"].as<AutoConnectText>();
+        AutoConnectText &BTN5ValueElm = aux["BTN5"].as<AutoConnectText>();
+        AutoConnectText &BTN6ValueElm = aux["BTN6"].as<AutoConnectText>();
         // vibSValueElm.value="VibS:91122";#
 
-        v1 = String(J1XValueElm.value);
-        v2 = String(J1YValueElm.value);
-        v3 = String(J2XValueElm.value);
-        v4 = String(J2YValueElm.value);
-        v5 = String(J2BTNValueElm.value);
-        v6 = String(J2BTNValueElm.value);
-        v7 = String(BTN1ValueElm.value);
-        v8 = String(BTN2ValueElm.value);
+        v1 = String(BTN1ValueElm.value);
+        v2 = String(BTN2ValueElm.value);
+        v3 = String(BTN3ValueElm.value);
+        v4 = String(BTN4ValueElm.value);
+        v5 = String(BTN5ValueElm.value);
+        v6 = String(BTN6ValueElm.value);
 
         if (v1.length() > 0)
         {
-            J1XValueElm.value = String("Joystick 1 X-Axis: ") + getADS1115Values(J1_X_AXIX);
-        }
-        if (v2.length() > 0)
-        {
-            J1YValueElm.value = String("Joystick 1 Y-Axis: ") + getADS1115Values(J1_Y_AXIX);
-        }
-        if (v3.length() > 0)
-        {
-            J2XValueElm.value = String("Joystick 2 X-Axis: ") + getADS1115Values(J2_X_AXIX);
-        }
-        if (v4.length() > 0)
-        {
-            J2YValueElm.value = String("Joystick 2 Y-Axis: ") + getADS1115Values(J2_Y_AXIX);
         }
 
-        J2BTNValueElm.value = String("Joystick 2 Button: ") + getButtonState(J1_BUTTON_PIN);
-
-        J1BTNValueElm.value = String("Joystick 1 Button: ") + getButtonState(J2_BUTTON_PIN);
         BTN1ValueElm.value = String("Button 1: ") + getButtonState(BTN_1);
         BTN2ValueElm.value = String("Button 2: ") + getButtonState(BTN_2);
+        BTN3ValueElm.value = String("Button 3: ") + getButtonState(BTN_3);
+        BTN4ValueElm.value = String("Button 4: ") + getButtonState(BTN_4);
+        BTN5ValueElm.value = String("Button 5: ") + getButtonState(BTN_5);
+        BTN6ValueElm.value = String("Button 6: ") + getButtonState(BTN_6);
 
         // curSValueElm.value="CurS:7788";
         param.close();
@@ -284,7 +269,7 @@ void setup() // main setup functions
     MDNS.addService("http", "tcp", 80);
     mqttConnect(); // start mqtt
 }
-String latestValues="";
+String latestValues = "";
 void loop()
 {
     server.handleClient();
@@ -293,13 +278,12 @@ void loop()
 
     if (millis() - lastPub > updateInterval) // publish data to mqtt server
     {
-        latestValues=getADS1115Values(J1_X_AXIX) + String(";") +
-                                                      getADS1115Values(J1_Y_AXIX) + String(";") + getADS1115Values(J2_X_AXIX) + String(";") + getADS1115Values(J2_Y_AXIX) +
-                                                      String(";") + getButtonState(J1_BTN) + String(";") + getButtonState(J2_BTN) + String(";") + getButtonState(BTN_1) +
-                                                      String(";") + getButtonState(BTN_2);
+        latestValues =
+            getButtonState(BTN_1) + String(";") + getButtonState(BTN_2) + String(";") + getButtonState(BTN_3) + String(";") +
+            getButtonState(BTN_4) String(";") + getButtonState(BTN_5) + String(";") + getButtonState(BTN_6);
         mqttPublish("smartj/" + String(hostName), getTimestamp() + String(";") + latestValues); // publish data to mqtt broker
         Serial.println(latestValues);
-        
+
         ledState(ACTIVE_MODE);
 
         lastPub = millis();

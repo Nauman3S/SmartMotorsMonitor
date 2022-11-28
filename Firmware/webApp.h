@@ -45,23 +45,23 @@ void cmotsValues()
     page += String(F("{\n\"Timestamp\":"));
     page += String((getTimestamp()));
 
-    page += String(F(",\n\"Joystick 1 X-Axis\":"));
-    page += String((getADS1115Values(J1_X_AXIX)));
-    page += String(F(",\n\"Joystick 1 Y-Axis\":"));
-    page += String((getADS1115Values(J1_Y_AXIX)));
-    page += String(F(",\n\"Joystick 1 Button\":"));
-    page += String((getButtonState(J1_BTN)));
     page += String(F(",\n\"Button 1\":"));
     page += String((getButtonState(BTN_1)));
 
-    page += String(F(",\n\"Joystick 2 X-Axis\":"));
-    page += String((getADS1115Values(J2_X_AXIX)));
-    page += String(F(",\n\"Joystick 2 Y-Axis\":"));
-    page += String((getADS1115Values(J2_Y_AXIX)));
-    page += String(F(",\n\"Joystick 2 Button\":"));
-    page += String((getButtonState(J2_BTN)));
     page += String(F(",\n\"Button 2\":"));
     page += String((getButtonState(BTN_2)));
+
+    page += String(F(",\n\"Button 3\":"));
+    page += String((getButtonState(BTN_3)));
+
+    page += String(F(",\n\"Button 4\":"));
+    page += String((getButtonState(BTN_4)));
+
+    page += String(F(",\n\"Button 5\":"));
+    page += String((getButtonState(BTN_5)));
+
+    page += String(F(",\n\"Button 2\":"));
+    page += String((getButtonState(BTN_6)));
 
     page += String(F("\n}\n}"));
 
@@ -110,23 +110,23 @@ void api()
     page += String((hostName));
     page += String(F("\":"));
 
-    page += String(F(",\n\"Joystick 1 X-Axis\":"));
-    page += String((getADS1115Values(J1_X_AXIX)));
-    page += String(F(",\n\"Joystick 1 Y-Axis\":"));
-    page += String((getADS1115Values(J1_Y_AXIX)));
-    page += String(F(",\n\"Joystick 1 Button\":"));
-    page += String((getButtonState(J1_BTN)));
     page += String(F(",\n\"Button 1\":"));
     page += String((getButtonState(BTN_1)));
 
-    page += String(F(",\n\"Joystick 2 X-Axis\":"));
-    page += String((getADS1115Values(J2_X_AXIX)));
-    page += String(F(",\n\"Joystick 2 Y-Axis\":"));
-    page += String((getADS1115Values(J2_Y_AXIX)));
-    page += String(F(",\n\"Joystick 2 Button\":"));
-    page += String((getButtonState(J2_BTN)));
     page += String(F(",\n\"Button 2\":"));
     page += String((getButtonState(BTN_2)));
+
+    page += String(F(",\n\"Button 3\":"));
+    page += String((getButtonState(BTN_3)));
+
+    page += String(F(",\n\"Button 4\":"));
+    page += String((getButtonState(BTN_4)));
+
+    page += String(F(",\n\"Button 5\":"));
+    page += String((getButtonState(BTN_5)));
+
+    page += String(F(",\n\"Button 2\":"));
+    page += String((getButtonState(BTN_6)));
 
     page += String(F("\n}"));
 
@@ -179,23 +179,24 @@ void handleRoot()
                                                         "Smart Joystick<br>");
 
     page += String(F("<h1>Sensors Data</h1>"));
-    page += String(F(",\n\"Joystick 1 X-Axis\":"));
-    page += String((getADS1115Values(J1_X_AXIX)));
-    page += String(F(",\n\"Joystick 1 Y-Axis\":"));
-    page += String((getADS1115Values(J1_Y_AXIX)));
-    page += String(F(",\n\"Joystick 1 Button\":"));
-    page += String((getButtonState(J1_BTN)));
+
     page += String(F(",\n\"Button 1\":"));
     page += String((getButtonState(BTN_1)));
 
-    page += String(F(",\n\"Joystick 2 X-Axis\":"));
-    page += String((getADS1115Values(J2_X_AXIX)));
-    page += String(F(",\n\"Joystick 2 Y-Axis\":"));
-    page += String((getADS1115Values(J2_Y_AXIX)));
-    page += String(F(",\n\"Joystick 2 Button\":"));
-    page += String((getButtonState(J2_BTN)));
     page += String(F(",\n\"Button 2\":"));
     page += String((getButtonState(BTN_2)));
+
+    page += String(F(",\n\"Button 3\":"));
+    page += String((getButtonState(BTN_3)));
+
+    page += String(F(",\n\"Button 4\":"));
+    page += String((getButtonState(BTN_4)));
+
+    page += String(F(",\n\"Button 5\":"));
+    page += String((getButtonState(BTN_5)));
+
+    page += String(F(",\n\"Button 2\":"));
+    page += String((getButtonState(BTN_6)));
 
     page += String(F("<p><br><a class=\"button\" href=\"/\">Refresh</a></p>"));
     page += String(F("</body></html>"));
@@ -257,23 +258,23 @@ void live()
     page += String(F("Timestamp: "));
     page += String((getTimestamp()));
     page += String(F("</h3>"));
-    page += String(F(",\n\"Joystick 1 X-Axis\":"));
-    page += String((getADS1115Values(J1_X_AXIX)));
-    page += String(F(",\n\"Joystick 1 Y-Axis\":"));
-    page += String((getADS1115Values(J1_Y_AXIX)));
-    page += String(F(",\n\"Joystick 1 Button\":"));
-    page += String((getButtonState(J1_BTN)));
     page += String(F(",\n\"Button 1\":"));
     page += String((getButtonState(BTN_1)));
 
-    page += String(F(",\n\"Joystick 2 X-Axis\":"));
-    page += String((getADS1115Values(J2_X_AXIX)));
-    page += String(F(",\n\"Joystick 2 Y-Axis\":"));
-    page += String((getADS1115Values(J2_Y_AXIX)));
-    page += String(F(",\n\"Joystick 2 Button\":"));
-    page += String((getButtonState(J2_BTN)));
     page += String(F(",\n\"Button 2\":"));
     page += String((getButtonState(BTN_2)));
+
+    page += String(F(",\n\"Button 3\":"));
+    page += String((getButtonState(BTN_3)));
+
+    page += String(F(",\n\"Button 4\":"));
+    page += String((getButtonState(BTN_4)));
+
+    page += String(F(",\n\"Button 5\":"));
+    page += String((getButtonState(BTN_5)));
+
+    page += String(F(",\n\"Button 2\":"));
+    page += String((getButtonState(BTN_6)));
     page += String(F("<br><br><h3>Data is being published to MQTT Topic: "));
     String dTopic = "smartj/" + hostName;
     page += String((dTopic));

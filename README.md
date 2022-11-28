@@ -42,6 +42,8 @@ This repo contains
 for Smart Joystick.
 
 
+![Architecture](artwork/Arch.drawio.png)
+
 
 ## Getting Started <a name = "getting_started"></a>
 
@@ -105,7 +107,7 @@ Follow the pinout diagram given below to connect different components to your TT
 
 
 
-### Circuit Diagram for Smart Speaker
+### Circuit Diagram for Smart Joystick
 
 Here's the complete circuit diagram of the system.
 
@@ -118,15 +120,6 @@ Other components pin connection details
 ```
 
 
-#### ADS1115
-
-```ADS1115 Connections with ESP32```
-
-| ADS1115 Pins | ESP32 Dev Module Pins| 
-| :--- | :--- | 
-| `SCL` | `22` |
-| `SDA` | `21` |
-| `GND` | `GND` | 
 
 #### Buttons
 
@@ -135,26 +128,15 @@ Other components pin connection details
 | Buttons Pins | ESP32 Dev Module Pins| 
 | :--- | :--- | 
 | `BTN1_PIN1` | `12` |
-| `BTN1_PIN2` | `GND` |
-| `BTN2_PIN1` | `33` |
-| `BTN2_PIN2` | `GND` |
+| `BTN2_PIN1` | `32` |
+| `BTN3_PIN1` | `15` |
+| `BTN4_PIN1` | `2` |
+| `BTN5_PIN1` | `4` |
+| `BTN6_PIN1` | `5` |
 
-#### Joystick Connections
 
-```Buttons Connections with ADS115 and ESP32```
 
-| Joystick Pins | ADS1115 Pins| 
-| :--- | :--- | 
-| `Joystick1_Y` | `A0` |
-| `Joystick1_X` | `A1` |
-| `Joystick2_Y` | `A2` |
-| `Joystick2_X` | `A3` |
-
-| Joystick Pins | ESP32 Pins| 
-| :--- | :--- | 
-| `Joystick1_BT` | `18` |
-| `Joystick2_BT` | `4` |
-
+| `ALL BTN PIN2` | `GND` |
 
 #### Status RGB LED
 
@@ -270,7 +252,7 @@ Following components are used to make this project
 ```diff
 + For future use
 ```
-<!-- -   [Device Demo Video]() - Smart Speaker Device Demo Video -->
+<!-- -   [Device Demo Video]() - Smart Joysticks Device Demo Video -->
 
 ## ✍️ Authors <a name = "authors"></a>
 
