@@ -7,19 +7,16 @@ void mqttPublish(String path, String msg);
 
 void MQTTUnSubscribe()
 {
-    String topicN = String("OEEDevice/dev/timestamp");
-    String topicU = String("SmartTControl/lastUpdated/devices/");
+
+    String topicN = ss.getTopicWithMAC("SmartJ/", "/actuator");
 
     mqttClient.unsubscribe(topicN.c_str());
-    mqttClient.unsubscribe(topicU.c_str());
 }
 void MQTTSubscriptions()
 {
 
-    String topicU = String("SmartTControl/lastUpdated/devices/");
-    String topicN = String("OEEDevice/dev/timestamp");
+    String topicN = ss.getTopicWithMAC("SmartJ/", "/actuator");
     mqttClient.subscribe(topicN.c_str());
-    mqttClient.subscribe(topicU.c_str());
 }
 void callback(char *topic, byte *payload, unsigned int length)
 {
@@ -38,6 +35,24 @@ void callback(char *topic, byte *payload, unsigned int length)
         syncTime(pLoad);
     }
 
+    else if (String(topic) == ss.getTopicWithMAC("SmartJ/", "/actuator"))
+    {
+        String dir = ss.StringSeparator(pLoad, ';', 0);
+        String speed = ss.StringSeparator(pLoad, ';', 1);
+
+        if (dir == String("forward"))
+        {
+            moveActator(FORWARD, speed.toInt());
+        }
+        else if (dir == String("backward"))
+        {
+            moveActator(BACKWARD, speed.toInt());
+        }
+        else if (dir == String("stop"))
+        {
+            moveActator(STOP, 0);
+        }
+    }
     // Switch on the LED if an 1 was received as first character
     if ((char)payload[0] == '1')
     {

@@ -11,15 +11,12 @@ public:
     SoftwareStack();
 
 private:
-
     char buf[100];
 
     int sensorVCounter = 0;
 };
 SoftwareStack::SoftwareStack()
 {
-
-  
 }
 
 char *SoftwareStack::StrToCharArray(String data)
@@ -46,4 +43,19 @@ String SoftwareStack::StringSeparator(String data, char separator, int index)
     }
 
     return found > index ? data.substring(strIndex[0], strIndex[1]) : "";
+}
+
+String SoftwareStack::getMACAddress()
+{
+    String TrackerID = String(WiFi.macAddress());
+    TrackerID = stringSeparator(TrackerID, ':', 0) + stringSeparator(TrackerID, ':', 1) + stringSeparator(TrackerID, ':', 2) + stringSeparator(TrackerID, ':', 3) +
+                stringSeparator(TrackerID, ':', 4) + stringSeparator(TrackerID, ':', 5);
+    return TrackerID;
+}
+String SoftwareStack::getTopicWithMAC(String before_mac, String after_mac)
+{
+
+    String t = before_mac + getMACAddress() + after_mac;
+
+    return t;
 }

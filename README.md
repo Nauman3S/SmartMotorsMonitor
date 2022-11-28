@@ -138,6 +138,19 @@ Other components pin connection details
 
 | `ALL BTN PIN2` | `GND` |
 
+#### L298N Pins
+
+```L298N Connections with ESP32```
+
+| L298N Pins | ESP32 Dev Module Pins| 
+| :--- | :--- | 
+| `ENA` | `14` |
+| `IN1` | `27` |
+| `IN2` | `26` |
+
+* While OUT1 and OUT2 will be connected to the linear actuator.
+* 12V will be connected to the 12V source.
+
 #### Status RGB LED
 
 ```LED Connections```

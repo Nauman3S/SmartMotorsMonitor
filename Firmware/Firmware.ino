@@ -1,6 +1,6 @@
 #include "consts.h"
 #include "button_handler.h"
-// #include "joystickHandler.h"
+#include "actuatorHandler.h"
 #include "headers.h" //all misc. headers and functions
 #include "esp32InternalTime.h"
 #include "MQTTFuncs.h" //MQTT related functions
@@ -146,7 +146,7 @@ void setup() // main setup functions
     Serial.begin(115200);
     delay(1000);
     setupButtons();
-    setupADS1115();
+    setupActuator();
 
     if (!MDNS.begin("smartj")) // starting mdns so that user can access webpage using url `esp32.local`(will not work on all devices)
     {

@@ -15,3 +15,12 @@
 #define BTN_4 109
 #define BTN_5 110
 #define BTN_6 111
+
+#define FORWARD 112
+#define BACKWARD 113
+#define STOP 114
+
+
+#define motor1Pin1 27
+#define motor1Pin2  26 
+#define enable1Pin  14
