@@ -51,7 +51,7 @@ This repo contains
 for Smart Motor Device Monitor.
 
 
-![Architecture](artwork/Arch.drawio.png)
+![Architecture](artwork/SysArch.png)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -126,40 +126,64 @@ Here's the complete circuit diagram of the system.
 ### Components Connections
 
 ```http
-Other components pin connection details
+Pin connection details
 ```
 
+#### MPU9250 - IMU
 
+```MPU9250 Connections with ESP32```
 
-#### Buttons
-
-```Buttons Connections with ESP32```
-
-| Buttons Pins | ESP32 Dev Module Pins| 
+| MPU9250 Pins | ESP32 Dev Module Pins| 
 | :--- | :--- | 
-| `BTN1_PIN1` | `12` |
-| `BTN2_PIN1` | `32` |
-| `BTN3_PIN1` | `15` |
-| `BTN4_PIN1` | `2` |
-| `BTN5_PIN1` | `4` |
-| `BTN6_PIN1` | `5` |
+| `SCL` | `D22` |
+| `SDA` | `D21` |
+| `VCC` | `3.3V` |
+| `GND` | `GND` |
 
+#### ADS1115 - ADC
 
+```ADS1115 Connections with ESP32```
 
-| `ALL BTN PIN2` | `GND` |
-
-#### L298N Pins
-
-```L298N Connections with ESP32```
-
-| L298N Pins | ESP32 Dev Module Pins| 
+| ADS1115 Pins | ESP32 Dev Module Pins| 
 | :--- | :--- | 
-| `ENA` | `14` |
-| `IN1` | `27` |
-| `IN2` | `26` |
+| `SCL` | `D22` |
+| `SDA` | `D21` |
+| `VCC` | `5V` |
+| `GND` | `GND` |
 
-* While OUT1 and OUT2 will be connected to the linear actuator.
-* 12V will be connected to the 12V source.
+#### Analog Input Pins
+
+```Analog Input Pin Connected with ADS1115```
+
+| Analog Input Pins | ADS1115 Pins| 
+| :--- | :--- | 
+| `A_IN1` | `A0` |
+| `A_IN2` | `A1` |
+
+#### Digital Input Pins
+
+```Digital Input Pin Connections with ESP32```
+
+| Digital Input Pins | ESP32 Dev Module Pins| 
+| :--- | :--- | 
+| `D_IN1` | `D5` |
+| `D_IN2` | `D18` |
+
+#### 4 Channel Relay Pins
+
+```Relay Module Pin Connections with ESP32```
+
+| Relay Module Pins | ESP32 Dev Module Pins| 
+| :--- | :--- | 
+| `IN1` | `D14` |
+| `IN2` | `D27` |
+| `IN3` | `D26` |
+| `IN4` | `D25` |
+| `GND` | `GND` |
+| `VCC` | `5V` |
+
+*The relay module is connected to esp32 via Logic Level Shifter*
+
 
 #### Status RGB LED
 
@@ -178,15 +202,15 @@ Other components pin connection details
 ```diff
 ! Ready for testing
 ```
-1.  Power on your ESP32, it will present you with an AP named ```SmartJ``` (while ```SmartJ``` can be changed in the portal)
+1.  Power on your ESP32, it will present you with an AP named ```SmartMM``` (while ```SmartMM``` can be changed in the portal)
 2.  Default captive portal password `12345678AP` which can be changed in captive portal.
-3.  Connect to the ESP32 access point and open the web-browser and navigate to the link ```http://smartj.local/_ac```. This link will work on most of the operating systems but if your operating system is not allowing to open it, you may want to check the captive portal IP Address from the serial monitor and can use that IP address inplace of the above mentioned URL.
+3.  Connect to the ESP32 access point and open the web-browser and navigate to the link ```http://SmartMM.local/_ac```. This link will work on most of the operating systems but if your operating system is not allowing to open it, you may want to check the captive portal IP Address from the serial monitor and can use that IP address inplace of the above mentioned URL.
 4.  The default access IP Address is ```http://192.168.4.1/_ac```
 5.  You will be presented with a main dashboard as shown below(based on your device)
    ![SCR1](artwork/scr1.png)
 
 5.  Once connected to a WiFi network, you can again access the captive portal using same URL or the IP Address from the Serial monitor.
-6.  The data is published to the MQTT Topic ```smartj/{hostname}``` while the hostname is the one which you can define in Settings page of the captive portal.
+6.  The data is published to the MQTT Topic ```SmartMM/{hostname}``` while the hostname is the one which you can define in Settings page of the captive portal.
 
 
 ### Changing Timezone
@@ -252,6 +276,9 @@ You can access the Smartphone app with following test acccount credentials
 
 ### Smartphone App Screenshots
 
+```diff
++ For future use.
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -261,13 +288,21 @@ You can access the Smartphone app with following test acccount credentials
 ```
 Following components are used to make this project
 
-1.  [ESP32 Dev Kit Module](https://www.amazon.com/HiLetgo-ESP-WROOM-32-Development-Microcontroller-Integrated/dp/B0718T232Z/ref=sr_1_3?crid=5EOAXOANUSCU&dchild=1&keywords=esp32+nodemcu&qid=1629587138&sprefix=esp32+node%2Caps%2C201&sr=8-3)
+1.  [ESP32 Dev Kit Module](https://www.amazon.ca/Robojax-Development-Bluetooth-Ultra-Low-Consumption/dp/B07PWGT83P/ref=sr_1_6?crid=FRPQEI8C5TH4&keywords=esp32+devkit&qid=1642575454&sprefix=esp32+devk%2Caps%2C371&sr=8-6)
 
 2. [Micro USB Cable](https://www.amazon.com/Android-Charger-sweguard-Charging-Phone-Grey/dp/B09MT18H3J/ref=sr_1_2_sspa?keywords=micro+usb+cable&qid=1661962441&sprefix=micro+usb+%2Caps%2C181&sr=8-2-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEzVkw1N1RQVTVHTVA3JmVuY3J5cHRlZElkPUEwODYyODU0MUdBSDQwTjBWVDZVSiZlbmNyeXB0ZWRBZElkPUEwODMyNjQyMVo4WU1VOVQ5UlMzQiZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=)
 
-3. [2x Joystick Modules](https://www.amazon.com/Active-Piezo-Buzzer-Module-SunFounder/dp/B014KQLE8Q/ref=sr_1_7?crid=33DTNM1X8SVMH&keywords=joystick%2Bmodule&qid=1660570221&sprefix=joystick%2Bmodule%2Caps%2C175&sr=8-7&th=1)
+3. [Compass-IMU9250](https://www.amazon.ca/MPU-9250-MPU9250-Acceleration-Gyroscope-Compass/dp/B07T8J3WCX/ref=sr_1_5?crid=306LGKOVATH5S&keywords=mpu9250&qid=1642575295&sprefix=mpu925%2Caps%2C308&sr=8-5)
 
-4. [Jumper Wires](https://www.amazon.com/EDGELEC-Breadboard-Optional-Assorted-Multicolored/dp/B07GD2BWPY/ref=sr_1_1_sspa?crid=1EFHAMLH1TF1Q&keywords=jumper+wires&qid=1661962101&sprefix=jumper+wire%2Caps%2C197&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUFHUFdBUzFHMDVOSlUmZW5jcnlwdGVkSWQ9QTAwNTYwNTAyVDNTNFI5RVI4TTNQJmVuY3J5cHRlZEFkSWQ9QTA5NDU0MzYxSkE3VExKQkZEQUxaJndpZGdldE5hbWU9c3BfYXRmJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==)
+4. [ADS1115](https://www.amazon.ca/Converter-Programmable-Amplifier-Precision-Development/dp/B07G85HMLV/ref=sr_1_8?crid=1Z49AYW6Q6ALZ&keywords=ads1115&qid=1678124373&sprefix=ads1115%2Caps%2C276&sr=8-8)
+
+5. [DC Buck Converter](https://www.amazon.ca/Converter-Waterproof-Voltage-Reducer-Electronics/dp/B08YXHR5GY/ref=sr_1_3_sspa?crid=1FL9EAQLMOKY0&keywords=buck%2Bconverter%2B21vdc&qid=1642575559&sprefix=buck%2Bconverter%2B21vd%2Caps%2C313&sr=8-3-spons&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUExUUtXMllCUjhLN0lLJmVuY3J5cHRlZElkPUEwNjQwNzQzMVk1SkJTTUhDQTJYUyZlbmNyeXB0ZWRBZElkPUEwMTAyNzQ1MTlGWExCOEw0VTBYMSZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU&th=1)
+
+6. [4 Channel Relay Module](https://www.amazon.ca/ELEGOO-Channel-Optocoupler-Arduino-Raspberry/dp/B06XCKQ1M9/ref=sr_1_1_sspa?crid=2IU6OG2T9GSTV&keywords=4+channel+relay&qid=1643175944&sprefix=4+channel+relay%2Caps%2C334&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyWjM5QU5MUkcwUUlGJmVuY3J5cHRlZElkPUEwNjg2MzkwMU9GQ1VFWDRLNU5OUyZlbmNyeXB0ZWRBZElkPUEwMjg0OTcyM0tSVjZFVkRQNVFDWiZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=)
+
+7. [Bi-Directional Logic Level Shifter](https://www.amazon.ca/Channel-Logic-Converter-Bidirectional-Module/dp/B07GRL18G9/ref=sr_1_13?keywords=logic+level+converter+3.3v+5v&qid=1642575729&sprefix=logic+level+%2Caps%2C306&sr=8-13)
+
+8. [Jumper Wires](https://www.amazon.com/EDGELEC-Breadboard-Optional-Assorted-Multicolored/dp/B07GD2BWPY/ref=sr_1_1_sspa?crid=1EFHAMLH1TF1Q&keywords=jumper+wires&qid=1661962101&sprefix=jumper+wire%2Caps%2C197&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUFHUFdBUzFHMDVOSlUmZW5jcnlwdGVkSWQ9QTAwNTYwNTAyVDNTNFI5RVI4TTNQJmVuY3J5cHRlZEFkSWQ9QTA5NDU0MzYxSkE3VExKQkZEQUxaJndpZGdldE5hbWU9c3BfYXRmJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

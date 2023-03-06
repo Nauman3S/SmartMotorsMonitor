@@ -109,7 +109,7 @@ String saveParams(AutoConnectAux &aux, PageArgument &args) // save the settings
     echo.value += "ESP host name: " + hostName + "<br>";
     echo.value += "AP Password: " + apPass + "<br>";
     echo.value += "Settings Page Password: " + settingsPass + "<br>";
-    mqttPublish("SmartJ/dev/config", String("tz;") + timezone); // publish timezone info
+    mqttPublish("SmartMM/dev/config", String("tz;") + timezone); // publish timezone info
     return String("");
 }
 bool loadAux(const String auxName) // load defaults from data/*.json
@@ -148,7 +148,7 @@ void setup() // main setup functions
     setupButtons();
     setupActuator();
 
-    if (!MDNS.begin("smartj")) // starting mdns so that user can access webpage using url `esp32.local`(will not work on all devices)
+    if (!MDNS.begin("SmartMM")) // starting mdns so that user can access webpage using url `esp32.local`(will not work on all devices)
     {
         Serial.println("Error setting up MDNS responder!");
         while (1)
@@ -281,7 +281,7 @@ void loop()
         latestValues =
             getButtonState(BTN_1) + String(";") + getButtonState(BTN_2) + String(";") + getButtonState(BTN_3) + String(";") +
             getButtonState(BTN_4) String(";") + getButtonState(BTN_5) + String(";") + getButtonState(BTN_6);
-        mqttPublish("smartj/" + String(hostName), getTimestamp() + String(";") + latestValues); // publish data to mqtt broker
+        mqttPublish("SmartMM/" + String(hostName), getTimestamp() + String(";") + latestValues); // publish data to mqtt broker
         Serial.println(latestValues);
 
         ledState(ACTIVE_MODE);

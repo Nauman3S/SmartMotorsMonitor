@@ -4,7 +4,7 @@ String userKey;
 String timezone = "";
 String apiKey;
 String apid;
-String hostName = "SmartJ";
+String hostName = "SmartMM";
 String minActiveValue = "0";
 String ampSensorType;
 String sensorSelection;
@@ -46,7 +46,7 @@ FS &FlashFS = LittleFS;
 fs::SPIFFSFS &FlashFS = SPIFFS;
 #endif
 #include "statusLED.h"
-#include "neoTimer.h"
+#include "neo_timer.h"
 
 #define GET_CHIPID() ((uint16_t)(ESP.getEfuseMac() >> 32))
 

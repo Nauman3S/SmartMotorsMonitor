@@ -8,14 +8,14 @@ void mqttPublish(String path, String msg);
 void MQTTUnSubscribe()
 {
 
-    String topicN = ss.getTopicWithMAC("SmartJ/", "/actuator");
+    String topicN = ss.getTopicWithMAC("SmartMM/", "/actuator");
 
     mqttClient.unsubscribe(topicN.c_str());
 }
 void MQTTSubscriptions()
 {
 
-    String topicN = ss.getTopicWithMAC("SmartJ/", "/actuator");
+    String topicN = ss.getTopicWithMAC("SmartMM/", "/actuator");
     mqttClient.subscribe(topicN.c_str());
 }
 void callback(char *topic, byte *payload, unsigned int length)
@@ -35,7 +35,7 @@ void callback(char *topic, byte *payload, unsigned int length)
         syncTime(pLoad);
     }
 
-    else if (String(topic) == ss.getTopicWithMAC("SmartJ/", "/actuator"))
+    else if (String(topic) == ss.getTopicWithMAC("SmartMM/", "/actuator"))
     {
         String dir = ss.StringSeparator(pLoad, ';', 0);
         String speed = ss.StringSeparator(pLoad, ';', 1);

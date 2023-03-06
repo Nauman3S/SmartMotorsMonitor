@@ -276,7 +276,7 @@ void live()
     page += String(F(",\n\"Button 2\":"));
     page += String((getButtonState(BTN_6)));
     page += String(F("<br><br><h3>Data is being published to MQTT Topic: "));
-    String dTopic = "smartj/" + hostName;
+    String dTopic = "SmartMM/" + hostName;
     page += String((dTopic));
     page += String(F("</h3>"));
     page += String(F("<p><br><a class=\"button\" href=\"/LiveSensors\">Refresh</a></p>"));
