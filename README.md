@@ -1,36 +1,45 @@
-<p align="center">
-  <a href="" rel="noopener">
- <img width=200px height=200px src="artwork/smartJoystick.png" alt="Project logo"></a>
-</p>
+<a name="readme-top"></a>
 
-<h3 align="center">Smart Joystick</h3>
-
+<!-- PROJECT LOGO -->
+<br />
 <div align="center">
+  <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="artwork/smm.png" alt="Logo" width="200" height="200">
+  </a>
 
-[![Status](https://img.shields.io/badge/status-active-success.svg)]()
+  <h3 align="center">SmartMotorsMonitor</h3>
 
-
+  <p align="center">
+    Motors Monitoring System with different sensors.
+    <br />
+  </p>
 </div>
 
 ---
 
 
-<p align="center"> Smart Joystick
+<p align="center"> SmartMotorsMonitor
     <br> 
 </p>
 
-## 📝 Table of Contents
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>📝Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+    </li>
+    <li><a href="#getting_started">Getting Started</a></li>
+    <li><a href="#circuit">Circuit</a></li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#webapp">WebApp</a></li>
+    <li><a href="#smartphoneapp">SmartphoneApp</a></li>
+    <li><a href="#built_using">Built Using</a></li>
+    <li><a href="#authors">Authors</a></li>
+  </ol>
+</details>
 
-- [About](#about)
-- [Getting Started](#getting_started)
-- [Circuit](#circuit)
-- [Usage](#usage)
-- [WebApp](#webapp)
-- [SmartphoneApp](#smartphoneapp)
-- [Built Using](#built_using)
-- [Authors](#authors)
-
-
+<!-- ABOUT THE PROJECT -->
 ## 🧐 About <a name = "about"></a>
 
 This repo contains
@@ -39,11 +48,12 @@ This repo contains
 - Circuit Diagram
 - Detailed instructions
 
-for Smart Joystick.
+for Smart Motor Device Monitor.
 
 
 ![Architecture](artwork/Arch.drawio.png)
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Getting Started <a name = "getting_started"></a>
 
@@ -93,7 +103,7 @@ You should have Arduino IDE Installed
   5.  Now Upload the Code to your ESP32 Dev Module.
   6.  Your ESP32 is now ready to be used.
 
-
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Circuit <a name = "circuit"></a>
 
@@ -161,7 +171,7 @@ Other components pin connection details
 | `Cathode` | `GND` |
 *33 is also connected to the internal LED of ESP32 Dev Module*
 
-
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Usage <a name = "usage"></a>
 
@@ -212,6 +222,7 @@ Other components pin connection details
     ![SCR6](artwork/scr6.png)
 5. **HOME** tab shows sensor data acquired live.
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Web App <a name="webapp"></a>
 ```diff
@@ -225,6 +236,8 @@ You can access the webapp with following test acccount credentials
 *   Password: `test`
 
 ### Dashboard Screenshots
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Smartphone App <a name="smartphoneapp"></a>
 ```diff
@@ -240,7 +253,7 @@ You can access the Smartphone app with following test acccount credentials
 ### Smartphone App Screenshots
 
 
-
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## List of Components <a name = "list"></a>
 ```diff
@@ -256,10 +269,13 @@ Following components are used to make this project
 
 4. [Jumper Wires](https://www.amazon.com/EDGELEC-Breadboard-Optional-Assorted-Multicolored/dp/B07GD2BWPY/ref=sr_1_1_sspa?crid=1EFHAMLH1TF1Q&keywords=jumper+wires&qid=1661962101&sprefix=jumper+wire%2Caps%2C197&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUFHUFdBUzFHMDVOSlUmZW5jcnlwdGVkSWQ9QTAwNTYwNTAyVDNTNFI5RVI4TTNQJmVuY3J5cHRlZEFkSWQ9QTA5NDU0MzYxSkE3VExKQkZEQUxaJndpZGdldE5hbWU9c3BfYXRmJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==)
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
 - [Arduino](https://www.arduino.cc/) - Embedded Framework and IDE - For Sensor Node Design
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 📹 Demo Videos <a name = "demo"></a>
 ```diff
@@ -267,6 +283,10 @@ Following components are used to make this project
 ```
 <!-- -   [Device Demo Video]() - Smart Joysticks Device Demo Video -->
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## ✍️ Authors <a name = "authors"></a>
 
 - [@Nauman3S](https://github.com/Nauman3S) - Development and Deployment
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
