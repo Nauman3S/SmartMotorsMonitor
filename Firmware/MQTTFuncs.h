@@ -35,22 +35,26 @@ void callback(char *topic, byte *payload, unsigned int length)
         syncTime(pLoad);
     }
 
-    else if (String(topic) == ss.getTopicWithMAC("SmartMM/", "/actuator"))
+    else if (String(topic) == ss.getTopicWithMAC("SmartMM/", "/relay"))
     {
-        String dir = ss.StringSeparator(pLoad, ';', 0);
-        String speed = ss.StringSeparator(pLoad, ';', 1);
+        String relayN = ss.StringSeparator(pLoad, ';', 0);
+        String relayState = ss.StringSeparator(pLoad, ';', 1);
 
-        if (dir == String("forward"))
+        if (relayN == String("r1"))
         {
-            moveActator(FORWARD, speed.toInt());
+            setRelay(RELAY1,relayState.toInt());
         }
-        else if (dir == String("backward"))
+        else if (relayN == String("r2"))
         {
-            moveActator(BACKWARD, speed.toInt());
+            setRelay(RELAY2,relayState.toInt());
         }
-        else if (dir == String("stop"))
+        else if (relayN == String("r3"))
         {
-            moveActator(STOP, 0);
+            setRelay(RELAY3,relayState.toInt());
+        }
+        else if (relayN == String("r4"))
+        {
+            setRelay(RELAY4,relayState.toInt());
         }
     }
     // Switch on the LED if an 1 was received as first character

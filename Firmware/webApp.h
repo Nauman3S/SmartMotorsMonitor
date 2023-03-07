@@ -45,23 +45,22 @@ void cmotsValues()
     page += String(F("{\n\"Timestamp\":"));
     page += String((getTimestamp()));
 
-    page += String(F(",\n\"Button 1\":"));
-    page += String((getButtonState(BTN_1)));
+    page += String(F(",\n\"Digital Input 1\":"));
+    page += String((getDigitalInputState(D_IN1)));
 
-    page += String(F(",\n\"Button 2\":"));
-    page += String((getButtonState(BTN_2)));
+    page += String(F(",\n\"Digital Input 2\":"));
+    page += String((getDigitalInputState(D_IN2)));
 
-    page += String(F(",\n\"Button 3\":"));
-    page += String((getButtonState(BTN_3)));
+    page += String(F(",\n\"Analog Input 1\":"));
+    page += String((getADS1115Values(A_IN1)));
 
-    page += String(F(",\n\"Button 4\":"));
-    page += String((getButtonState(BTN_4)));
+    page += String(F(",\n\"Analog Input 2\":"));
+    page += String((getADS1115Values(A_IN2)));
 
-    page += String(F(",\n\"Button 5\":"));
-    page += String((getButtonState(BTN_5)));
+    page += String(F(",\n\"IMU(AX,AY,AZ,GX,GY,GZ,MX,MY,MZ,T) \":"));
+    page += String((getMPU9250Values()));
 
-    page += String(F(",\n\"Button 2\":"));
-    page += String((getButtonState(BTN_6)));
+    
 
     page += String(F("\n}\n}"));
 
@@ -110,23 +109,21 @@ void api()
     page += String((hostName));
     page += String(F("\":"));
 
-    page += String(F(",\n\"Button 1\":"));
-    page += String((getButtonState(BTN_1)));
+   page += String(F(",\n\"Digital Input 1\":"));
+    page += String((getDigitalInputState(D_IN1)));
 
-    page += String(F(",\n\"Button 2\":"));
-    page += String((getButtonState(BTN_2)));
+    page += String(F(",\n\"Digital Input 2\":"));
+    page += String((getDigitalInputState(D_IN2)));
 
-    page += String(F(",\n\"Button 3\":"));
-    page += String((getButtonState(BTN_3)));
+    page += String(F(",\n\"Analog Input 1\":"));
+    page += String((getADS1115Values(A_IN1)));
 
-    page += String(F(",\n\"Button 4\":"));
-    page += String((getButtonState(BTN_4)));
+    page += String(F(",\n\"Analog Input 2\":"));
+    page += String((getADS1115Values(A_IN2)));
 
-    page += String(F(",\n\"Button 5\":"));
-    page += String((getButtonState(BTN_5)));
+    page += String(F(",\n\"IMU(AX,AY,AZ,GX,GY,GZ,MX,MY,MZ,T) \":"));
+    page += String((getMPU9250Values()));
 
-    page += String(F(",\n\"Button 2\":"));
-    page += String((getButtonState(BTN_6)));
 
     page += String(F("\n}"));
 
@@ -180,23 +177,21 @@ void handleRoot()
 
     page += String(F("<h1>Sensors Data</h1>"));
 
-    page += String(F(",\n\"Button 1\":"));
-    page += String((getButtonState(BTN_1)));
+   page += String(F(",\n\"Digital Input 1\":"));
+    page += String((getDigitalInputState(D_IN1)));
 
-    page += String(F(",\n\"Button 2\":"));
-    page += String((getButtonState(BTN_2)));
+    page += String(F(",\n\"Digital Input 2\":"));
+    page += String((getDigitalInputState(D_IN2)));
 
-    page += String(F(",\n\"Button 3\":"));
-    page += String((getButtonState(BTN_3)));
+    page += String(F(",\n\"Analog Input 1\":"));
+    page += String((getADS1115Values(A_IN1)));
 
-    page += String(F(",\n\"Button 4\":"));
-    page += String((getButtonState(BTN_4)));
+    page += String(F(",\n\"Analog Input 2\":"));
+    page += String((getADS1115Values(A_IN2)));
 
-    page += String(F(",\n\"Button 5\":"));
-    page += String((getButtonState(BTN_5)));
+    page += String(F(",\n\"IMU(AX,AY,AZ,GX,GY,GZ,MX,MY,MZ,T) \":"));
+    page += String((getMPU9250Values()));
 
-    page += String(F(",\n\"Button 2\":"));
-    page += String((getButtonState(BTN_6)));
 
     page += String(F("<p><br><a class=\"button\" href=\"/\">Refresh</a></p>"));
     page += String(F("</body></html>"));
@@ -258,23 +253,21 @@ void live()
     page += String(F("Timestamp: "));
     page += String((getTimestamp()));
     page += String(F("</h3>"));
-    page += String(F(",\n\"Button 1\":"));
-    page += String((getButtonState(BTN_1)));
+   page += String(F(",\n\"Digital Input 1\":"));
+    page += String((getDigitalInputState(D_IN1)));
 
-    page += String(F(",\n\"Button 2\":"));
-    page += String((getButtonState(BTN_2)));
+    page += String(F(",\n\"Digital Input 2\":"));
+    page += String((getDigitalInputState(D_IN2)));
 
-    page += String(F(",\n\"Button 3\":"));
-    page += String((getButtonState(BTN_3)));
+    page += String(F(",\n\"Analog Input 1\":"));
+    page += String((getADS1115Values(A_IN1)));
 
-    page += String(F(",\n\"Button 4\":"));
-    page += String((getButtonState(BTN_4)));
+    page += String(F(",\n\"Analog Input 2\":"));
+    page += String((getADS1115Values(A_IN2)));
 
-    page += String(F(",\n\"Button 5\":"));
-    page += String((getButtonState(BTN_5)));
+    page += String(F(",\n\"IMU(AX,AY,AZ,GX,GY,GZ,MX,MY,MZ,T) \":"));
+    page += String((getMPU9250Values()));
 
-    page += String(F(",\n\"Button 2\":"));
-    page += String((getButtonState(BTN_6)));
     page += String(F("<br><br><h3>Data is being published to MQTT Topic: "));
     String dTopic = "SmartMM/" + hostName;
     page += String((dTopic));

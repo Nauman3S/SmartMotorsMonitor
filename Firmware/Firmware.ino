@@ -23,9 +23,6 @@ String loadParams(AutoConnectAux &aux, PageArgument &args) // function to load s
     String v3 = "0";
     String v4 = "0";
     String v5 = "0";
-    String v6 = "0";
-    String v7 = "0";
-    String v8 = "0";
 
     if (param)
     {
@@ -34,31 +31,29 @@ String loadParams(AutoConnectAux &aux, PageArgument &args) // function to load s
         Serial.println(param);
         // Serial.println(args);
 
-        AutoConnectText &BTN1ValueElm = aux["BTN1"].as<AutoConnectText>();
-        AutoConnectText &BTN2ValueElm = aux["BTN2"].as<AutoConnectText>();
-        AutoConnectText &BTN3ValueElm = aux["BTN3"].as<AutoConnectText>();
-        AutoConnectText &BTN4ValueElm = aux["BTN4"].as<AutoConnectText>();
-        AutoConnectText &BTN5ValueElm = aux["BTN5"].as<AutoConnectText>();
-        AutoConnectText &BTN6ValueElm = aux["BTN6"].as<AutoConnectText>();
+        AutoConnectText &D1ValueElm = aux["D_IN1"].as<AutoConnectText>();
+        AutoConnectText &D2ValueElm = aux["D_IN2"].as<AutoConnectText>();
+        AutoConnectText &A1ValueElm = aux["A_IN1"].as<AutoConnectText>();
+        AutoConnectText &A2ValueElm = aux["A_IN2"].as<AutoConnectText>();
+        AutoConnectText &IMUValueElm = aux["IMU"].as<AutoConnectText>();
+
         // vibSValueElm.value="VibS:91122";#
 
-        v1 = String(BTN1ValueElm.value);
-        v2 = String(BTN2ValueElm.value);
-        v3 = String(BTN3ValueElm.value);
-        v4 = String(BTN4ValueElm.value);
-        v5 = String(BTN5ValueElm.value);
-        v6 = String(BTN6ValueElm.value);
+        v1 = String(D1ValueElm.value);
+        v2 = String(D2ValueElm.value);
+        v3 = String(A1ValueElm.value);
+        v4 = String(A2ValueElm.value);
+        v5 = String(IMUValueElm.value);
 
         if (v1.length() > 0)
         {
         }
 
-        BTN1ValueElm.value = String("Button 1: ") + getButtonState(BTN_1);
-        BTN2ValueElm.value = String("Button 2: ") + getButtonState(BTN_2);
-        BTN3ValueElm.value = String("Button 3: ") + getButtonState(BTN_3);
-        BTN4ValueElm.value = String("Button 4: ") + getButtonState(BTN_4);
-        BTN5ValueElm.value = String("Button 5: ") + getButtonState(BTN_5);
-        BTN6ValueElm.value = String("Button 6: ") + getButtonState(BTN_6);
+        D1ValueElm.value = String("Digital Input 1: ") + getDigitalInputState(D_IN1);
+        D2ValueElm.value = String("Digital Input 2: ") + getDigitalInputState(D_IN2);
+        A1ValueElm.value = String("Analog Input 1: ") + getADS1115Values(A_IN1);
+        A2ValueElm.value = String("Analog Input 2: ") + getADS1115Values(A_IN2);
+        IMUValueElm.value = String("IMU(AX,AY,AZ,GX,GY,GZ,MX,MY,MZ,T): ") + getMPU9250Values();
 
         // curSValueElm.value="CurS:7788";
         param.close();

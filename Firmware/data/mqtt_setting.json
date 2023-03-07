@@ -64,37 +64,31 @@
       "value": "<hr>"
     },
     {
-      "name": "BTN1",
+      "name": "D_IN1",
       "type": "ACText",
       "value": "0",
       "style": "font-family:serif;color:#4682b4;"
     },
     {
-      "name": "BTN2",
+      "name": "D_IN2",
       "type": "ACText",
       "value": "0",
       "style": "font-family:serif;color:#4682b4;"
     },
     {
-      "name": "BTN3",
+      "name": "A_IN1",
       "type": "ACText",
       "value": "0",
       "style": "font-family:serif;color:#4682b4;"
     },
     {
-      "name": "BTN4",
+      "name": "A_IN2",
       "type": "ACText",
       "value": "0",
       "style": "font-family:serif;color:#4682b4;"
     },
     {
-      "name": "BTN5",
-      "type": "ACText",
-      "value": "0",
-      "style": "font-family:serif;color:#4682b4;"
-    },
-    {
-      "name": "BTN6",
+      "name": "IMU",
       "type": "ACText",
       "value": "0",
       "style": "font-family:serif;color:#4682b4;"
