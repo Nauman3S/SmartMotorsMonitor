@@ -1,26 +1,21 @@
 #define WIFI_SSID 0
 #define WIFI_PASSWORD 1
 
-#define BTN1_PIN 12
-#define BTN2_PIN 32
-#define BTN3_PIN 15
-#define BTN4_PIN 2
-#define BTN5_PIN 4
-#define BTN6_PIN 5
+#define A_IN1 2
+#define A_IN2 3
 
+#define D_IN1_PIN 5
+#define D_IN2_PIN 18
 
-#define BTN_1 106
-#define BTN_2 107
-#define BTN_3 108
-#define BTN_4 109
-#define BTN_5 110
-#define BTN_6 111
+#define D_IN1 4
+#define D_IN2 5
 
-#define FORWARD 112
-#define BACKWARD 113
-#define STOP 114
+#define RELAY_PIN1 14
+#define RELAY_PIN2 27
+#define RELAY_PIN3 26
+#define RELAY_PIN4 25
 
-
-#define motor1Pin1 27
-#define motor1Pin2  26 
-#define enable1Pin  14
+#define RELAY1 6
+#define RELAY2 7
+#define RELAY3 8
+#define RELAY4 9

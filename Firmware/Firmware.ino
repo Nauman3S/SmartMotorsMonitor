@@ -1,6 +1,8 @@
 #include "consts.h"
-#include "button_handler.h"
-#include "actuatorHandler.h"
+#include "digital_input_handler.h"
+#include "ads_handler.h"
+#include "relay_handler.h"
+#include "mpu9250_handler.h"
 #include "headers.h" //all misc. headers and functions
 #include "esp32InternalTime.h"
 #include "MQTTFuncs.h" //MQTT related functions
@@ -145,8 +147,14 @@ void setup() // main setup functions
 {
     Serial.begin(115200);
     delay(1000);
-    setupButtons();
-    setupActuator();
+    setupDigitalInputs();
+    setupMPU9250();
+    setupADS1115();
+    setupRelays();
+    setRelay(RELAY1, 0);
+    setRelay(RELAY2, 0);
+    setRelay(RELAY3, 0);
+    setRelay(RELAY4, 0);
 
     if (!MDNS.begin("SmartMM")) // starting mdns so that user can access webpage using url `esp32.local`(will not work on all devices)
     {
@@ -269,7 +277,8 @@ void setup() // main setup functions
     MDNS.addService("http", "tcp", 80);
     mqttConnect(); // start mqtt
 }
-String latestValues = "";
+String latestInputValues = "";
+String latestIMUValues = "";
 void loop()
 {
     server.handleClient();
@@ -278,11 +287,14 @@ void loop()
 
     if (millis() - lastPub > updateInterval) // publish data to mqtt server
     {
-        latestValues =
-            getButtonState(BTN_1) + String(";") + getButtonState(BTN_2) + String(";") + getButtonState(BTN_3) + String(";") +
-            getButtonState(BTN_4) String(";") + getButtonState(BTN_5) + String(";") + getButtonState(BTN_6);
-        mqttPublish("SmartMM/" + String(hostName), getTimestamp() + String(";") + latestValues); // publish data to mqtt broker
-        Serial.println(latestValues);
+        latestInputValues =
+            getDigitalInputState(D_IN1) + String(";") + getDigitalInputState(D_IN2) + String(";") + getADS1115Values(A_IN1) + String(";") +
+            getADS1115Values(A_IN2);
+        latestIMUValues = getMPU9250Values();
+        mqttPublish("SmartMM/" + String(hostName) + String("/inputs"), getTimestamp() + String(";") + latestInputValues); // publish data to mqtt broker
+        mqttPublish("SmartMM/" + String(hostName) + String("/imu"), getTimestamp() + String(";") + latestIMUValues);      // publish data to mqtt broker
+        Serial.println(latestInputValues);
+        Serial.println(latestIMUValues);
 
         ledState(ACTIVE_MODE);
 
