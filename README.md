@@ -129,15 +129,17 @@ Here's the complete circuit diagram of the system.
 Pin connection details
 ```
 
-#### MPU9250 - IMU
+#### HWT906-TTL - IMU
 
-```MPU9250 Connections with ESP32```
+```HWT906-TTL Connections with ESP32```
 
-| MPU9250 Pins | ESP32 Dev Module Pins| 
+** Remove the HWT906-TTL case to see the connections.
+
+| HWT906-TTL Pins | ESP32 Dev Module Pins| 
 | :--- | :--- | 
 | `SCL` | `D22` |
 | `SDA` | `D21` |
-| `VCC` | `3.3V` |
+| `VCC` | `5V` |
 | `GND` | `GND` |
 
 #### ADS1115 - ADC
