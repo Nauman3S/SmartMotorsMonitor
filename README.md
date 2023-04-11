@@ -31,6 +31,7 @@
     </li>
     <li><a href="#getting_started">Getting Started</a></li>
     <li><a href="#circuit">Circuit</a></li>
+    <li><a href="#architecture">Architecture</a></li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#webapp">WebApp</a></li>
     <li><a href="#smartphoneapp">SmartphoneApp</a></li>
@@ -98,10 +99,17 @@ You should have Arduino IDE Installed
 ##### ESP32 Node FW Uploading
   1.  Select ESP32 Dev Module from Tools->Board->ESP32
   2.  Select the correct port from Tools->Port
-  3.  Then open Firmware.ino file,
+  3.  Open SensorNode.ino file.
+  5.  Upload the Code to your ESP32 Dev Module.
+  6.  Your ESP32-based SensorNode is now ready to be used.
+
+##### ESP32 Gateway Node FW Uploading
+  1.  Select ESP32 Dev Module from Tools->Board->ESP32
+  2.  Select the correct port from Tools->Port
+  3.  open GatewayNode.ino file,
   4.  Select Tools > ESP32 Sketch Data Upload menu item. This should start uploading the files into ESP32 flash file system.
-  5.  Now Upload the Code to your ESP32 Dev Module.
-  6.  Your ESP32 is now ready to be used.
+  5.  Upload the Code to your ESP32 Dev Module.
+  6.  Your ESP32-based Gateway Node is now ready to be used.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -111,7 +119,7 @@ You should have Arduino IDE Installed
 ### ESP32 Dev Module Pinout
 
 
-Follow the pinout diagram given below to connect different components to your TTGO LORA32 board.
+Follow the pinout diagram given below to connect different components to your board.
 
 ![LoraPinout](Circuit/ESP32-Pinout.jpg)
 
@@ -199,11 +207,21 @@ Pin connection details
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## 🔧 Mesh Architecture <a name = "architecture"></a>
+
+High level architecture of the Mesh network
+![arch](artwork/arch.png)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Usage <a name = "usage"></a>
 
 ```diff
 ! Ready for testing
 ```
+Power on your Sensor Nodes.
+
+### Gateway Node
 1.  Power on your ESP32, it will present you with an AP named ```SmartMM``` (while ```SmartMM``` can be changed in the portal)
 2.  Default captive portal password `12345678AP` which can be changed in captive portal.
 3.  Connect to the ESP32 access point and open the web-browser and navigate to the link ```http://SmartMM.local/_ac```. This link will work on most of the operating systems but if your operating system is not allowing to open it, you may want to check the captive portal IP Address from the serial monitor and can use that IP address inplace of the above mentioned URL.
@@ -223,7 +241,7 @@ Pin connection details
 2.  Enter timezone string from https://en.wikipedia.org/wiki/List_of_tz_database_time_zones 'TZ database name' column.
 3.  Click Save&Start
 
-### API Endpoints and HTML URLS
+### API Endpoints and HTML URLS(for Gateway Node)
 
 ```API Endpoints```
 

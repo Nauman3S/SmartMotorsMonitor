@@ -8,6 +8,8 @@
 #include "MQTTFuncs.h" //MQTT related functions
 #include "webApp.h"    //Captive Portal webpages
 #include <FS.h>        //ESP32 File System
+#include "wifi_mesh_handler.h"
+
 
 const long interval = 1000 * 60 * 5;        // Interval at which to read sensors//5 mintues
 Neotimer dataAcqTimer = Neotimer(interval); // Set timer's preset
@@ -270,6 +272,7 @@ void setup() // main setup functions
     }
 
     MDNS.addService("http", "tcp", 80);
+    setupMeshGateway();// no mesh without internet connectivity
     mqttConnect(); // start mqtt
 }
 String latestInputValues = "";
@@ -300,6 +303,7 @@ void loop()
         reconnect();
     }
     mqttClient.loop();
+    meshGatewayLoop();
     if (WiFi.status() == WL_IDLE_STATUS)
     {
         ledState(IDLE_MODE);

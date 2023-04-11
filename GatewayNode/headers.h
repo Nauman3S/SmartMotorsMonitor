@@ -12,6 +12,11 @@ String apPass;
 String settingsPass;
 String Photosensor = "0";
 String tempUnits = "";
+const char *ssid = "hotspot2";
+const char *password = "abc123098a#";
+
+#define STATION_SSID ssid
+#define STATION_PASSWORD password
 
 #if defined(ARDUINO_ARCH_ESP8266)
 #include <ESP8266WiFi.h>
