@@ -150,11 +150,11 @@ Pin connection details
 | `VCC` | `5V` |
 | `GND` | `GND` |
 
-#### ADS1115 - ADC
+#### ADS1015 - ADC
 
-```ADS1115 Connections with ESP32```
+```ADS1015 Connections with ESP32```
 
-| ADS1115 Pins | ESP32 Dev Module Pins| 
+| ADS1015 Pins | ESP32 Dev Module Pins| 
 | :--- | :--- | 
 | `SCL` | `D22` |
 | `SDA` | `D21` |
@@ -314,7 +314,7 @@ Following components are used to make this project
 
 3. [Compass-IMU9250](https://www.amazon.ca/MPU-9250-MPU9250-Acceleration-Gyroscope-Compass/dp/B07T8J3WCX/ref=sr_1_5?crid=306LGKOVATH5S&keywords=mpu9250&qid=1642575295&sprefix=mpu925%2Caps%2C308&sr=8-5)
 
-4. [ADS1115](https://www.amazon.ca/Converter-Programmable-Amplifier-Precision-Development/dp/B07G85HMLV/ref=sr_1_8?crid=1Z49AYW6Q6ALZ&keywords=ads1115&qid=1678124373&sprefix=ads1115%2Caps%2C276&sr=8-8)
+4. [ADS1015](https://www.amazon.com/ADS1015-Ultra-Compact-12-Precision-Module-Development/dp/B07V85ZQBN/ref=sr_1_1?keywords=ADS1015&qid=1683352303&sr=8-1)
 
 5. [DC Buck Converter](https://www.amazon.ca/Converter-Waterproof-Voltage-Reducer-Electronics/dp/B08YXHR5GY/ref=sr_1_3_sspa?crid=1FL9EAQLMOKY0&keywords=buck%2Bconverter%2B21vdc&qid=1642575559&sprefix=buck%2Bconverter%2B21vd%2Caps%2C313&sr=8-3-spons&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUExUUtXMllCUjhLN0lLJmVuY3J5cHRlZElkPUEwNjQwNzQzMVk1SkJTTUhDQTJYUyZlbmNyeXB0ZWRBZElkPUEwMTAyNzQ1MTlGWExCOEw0VTBYMSZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU&th=1)
 
