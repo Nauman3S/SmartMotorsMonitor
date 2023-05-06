@@ -94,8 +94,8 @@ void loop()
 void sendMessage()
 {
     latestInputValues =
-        getDigitalInputState(D_IN1) + String(";") + getDigitalInputState(D_IN2) + String(";") + getADS1115Values(A_IN1) + String(";") +
-        getADS1115Values(A_IN2);
+        getDigitalInputState(D_IN1) + String(";") + getDigitalInputState(D_IN2) + String(";") + getADS1015Values(A_IN1) + String(";") +
+        getADS1015Values(A_IN2);
     latestIMUValues = getMPU9250Values();
     String msg = "FRMID: " + TrackerID + String("__"); // FRMID=From ID
     msg += mesh.getNodeId();
