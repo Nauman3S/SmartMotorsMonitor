@@ -12,17 +12,19 @@ void setRelay(int relay, int state)
     if (relay == RELAY1)
     {
         digitalWrite(RELAY_PIN1, state);
+        digitalWrite(~RELAY_PIN2, state);
     }
     else if (relay == RELAY2)
     {
-        digitalWrite(RELAY_PIN2, state);
+        
     }
     else if (relay == RELAY3)
     {
         digitalWrite(RELAY_PIN3, state);
+        digitalWrite(~RELAY_PIN4, state);
     }
     else if (relay == RELAY4)
     {
-        digitalWrite(RELAY_PIN4, state);
+        
     }
 }
